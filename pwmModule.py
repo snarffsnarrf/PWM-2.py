@@ -24,6 +24,7 @@ class Motor:
         self.t = GPIO.PWM(11, Freq.tfreq)
         self.b = GPIO.PWM(13, Freq.bfreq)
 
+
 def pwm(pin, freq):
     GPIO.PWM(pin, freq)
 

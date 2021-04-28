@@ -1,4 +1,5 @@
 from classes import (Freq, Pin, pwm, DutyCycle, duty)  # Maybe I'm doing this right?
+import RPi.GPIO as GPIO
 
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(11, GPIO.OUT)
@@ -13,12 +14,14 @@ Freq.bfreq = 0
 DutyCycle.tduty = 0
 DutyCycle.bduty = 0
 
+t = pwm()
 
 while True:
     pwm(13, Freq.tfreq)
     pwm(11, Freq.bfreq)
     duty(11, DutyCycle.tduty)
     duty(13, DutyCycle.bduty)
-
+    t.ChangeDutyCycle(Freq.tfreq)
+    ChangeDutyCycle(Freq.bfreq)
 
 

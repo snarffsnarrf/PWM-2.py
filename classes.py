@@ -29,13 +29,12 @@ def pwm(pin, freq):
     GPIO.PWM(pin, freq)
 
 def duty(tfreq, bfreq):
-    ChangeDutyCycle(tfreq)
-    ChangeDutyCycle(bfreq)
 
 
 
 
-pwm(Pin.pin, Freq.tfreq)
+
+    pwm(Pin.pin, Freq.tfreq)
 
 Freq.tfreq = 500
 Freq.bfreq = 500

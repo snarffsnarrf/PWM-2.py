@@ -12,9 +12,18 @@ class Pin:
     def __init__(self, pin):
         self.pin = pin
 
+class DutyCycle:
+    def __init__(self, tduty, bduty):
+        self.tduty = tduty
+        self.bduty = bduty
+
+
 
 def pwm(pin, freq):
     GPIO.PWM(pin, freq)
+
+def duty(pin, duty):
+    GPIO.ChangeDutyCycle(pin, duty)
 
 
 

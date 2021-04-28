@@ -1,4 +1,7 @@
-from pwmModule import (Freq, Pin, pwm, DutyCycle, duty)  # Maybe I'm doing this right?
+from pwmModule import (Freq, Pin, pwm, DutyCycle, duty, Motor)  # Maybe I'm doing this right?
+import RPi.GPIO as GPIO
+import time
+
 
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(11, GPIO.OUT)
@@ -14,11 +17,13 @@ DutyCycle.tduty = 0
 DutyCycle.bduty = 0
 
 
+
+
 while True:
+    t.start(Freq.tfreq)
     pwm(13, Freq.tfreq)
     pwm(11, Freq.bfreq)
-    duty(11, DutyCycle.tduty)
-    duty(13, DutyCycle.bduty)
+
 
 
 

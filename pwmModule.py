@@ -21,5 +21,6 @@ def pwm(pin, freq):
 
 pwm(Pin.pin, Freq.tfreq)
 
-Freq.tfreq = 5
+Freq.tfreq = 500
+Freq.bfreq = 500
 Pin.pin = 11

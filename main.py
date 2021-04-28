@@ -8,10 +8,13 @@ GPIO.setup(18, GPIO.OUT)    # direction control t.2
 GPIO.setup(29, GPIO.OUT)    # direction control b.1
 GPIO.setup(31, GPIO.OUT)    # direction control b.2
 
+Freq.tfreq = 100
+Freq.bfreq = 100
 
 
-pwm(Pin.pin, Freq.tfreq)
-pwm(Pin.pin, Freq.bfreq)
+while True:
+    pwm(13, Freq.tfreq)
+    pwm(11, Freq.bfreq)
 
-Freq.tfreq = 5
+
 Pin.pin = 11

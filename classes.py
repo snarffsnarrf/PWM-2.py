@@ -2,8 +2,6 @@ import RPi.GPIO as GPIO
 import time
 
 
-
-
 class Freq:
     def __init__(self, tfreq, bfreq):
         self.tfreq = tfreq
@@ -14,10 +12,12 @@ class Pin:
     def __init__(self, pin):
         self.pin = pin
 
+
 class DutyCycle:
     def __init__(self, tduty, bduty):
         self.tduty = tduty
         self.bduty = bduty
+
 
 class Motor:
     def __init__(self, t, b):
@@ -27,6 +27,7 @@ class Motor:
 
 def pwm(pin, freq):
     GPIO.PWM(pin, freq)
+
 
 def duty(tfreq, bfreq):
 

@@ -1,4 +1,4 @@
-from classes import (Freq, Pin, pwm, DutyCycle, duty)  # Maybe I'm doing this right?
+from classtree import (Freq, Pin, pwm, DutyCycle, duty)  # Maybe I'm doing this right?
 import RPi.GPIO as GPIO
 
 GPIO.setmode(GPIO.BOARD)

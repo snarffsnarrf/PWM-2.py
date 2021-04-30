@@ -1,8 +1,15 @@
 # import RPi.GPIO as GPIO
+import time
+
+Hfreq = 100
+Lfreq = 50
+Tpin = 11
+Bpin = 13
 
 
 
 class Shot:
+
     def __init__(self, tfreq, bfreq, tpin, bpin, tduty, bduty):
         self.tfreq = tfreq
         self.bfreq = bfreq
@@ -11,22 +18,45 @@ class Shot:
         self.tduty = tduty
         self.bduty = bduty
 
-    def shotout(self):
-        return '{} {} {} {} {} {}'.format(self.tfreq, self.bfreq, self.tpin, self.bpin, self.tduty, self.bduty)
+    def topspin(self):
+        self.tfreq = Hfreq
+        self.bfreq = Hfreq
+        self.tpin = Tpin
+        self.bpin = Bpin
+        self.tduty = 100
+        self.bduty = 80
 
-    def shotout2(self):
-        pass
-
-def shottype():
-    Shot(50, 50, 11, 13, 50, 40)
-    Shot(80, 80, 11, 13, 100, 100)
-
-
-
-
-print(Shot.shotout())
-shottype()
-print(Shot.shotout())
-
+    def backspin(self):
+        self.tfreq = Hfreq
+        self.bfreq = Hfreq
+        self.tpin = Tpin
+        self.bpin = Bpin
+        self.tduty = 80
+        self.bduty = 100
 
 
+Shot = Shot(0, 0, 0, 0, 0, 0)
+
+def output():
+    return 'Top Freq={} | Bot Freq={} | Top Pin={} | Bot Pin={} | TDuty {} | Bduty {}'\
+        .format(Shot.tfreq, Shot.bfreq, Shot.tpin, Shot.bpin, Shot.tduty, Shot.bduty)
+
+print(output())
+time.sleep(1)
+Shot.topspin()
+print(output())
+time.sleep(1)
+Shot.backspin()
+print(output())
+time.sleep(1)
+Shot.topspin()
+print(output())
+time.sleep(1)
+Shot.backspin()
+print(output())
+time.sleep(1)
+Shot.topspin()
+print(output())
+time.sleep(1)
+Shot.backspin()
+print(output())

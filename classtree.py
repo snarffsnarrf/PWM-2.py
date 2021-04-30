@@ -1,3 +1,4 @@
+# import RPi.GPIO as GPIO
 
 
 
@@ -13,13 +14,19 @@ class Shot:
     def shotout(self):
         return '{} {} {} {} {} {}'.format(self.tfreq, self.bfreq, self.tpin, self.bpin, self.tduty, self.bduty)
 
+    def shotout2(self):
+        pass
 
-slow = Shot(50, 50, 11, 13, 50, 40)
-fast = Shot(80, 80, 11, 13, 100, 100)
+def shottype():
+    Shot(50, 50, 11, 13, 50, 40)
+    Shot(80, 80, 11, 13, 100, 100)
 
 
 
-print(slow.shotout())
-print(fast.shotout())
+
+print(Shot.shotout())
+shottype()
+print(Shot.shotout())
+
 
 

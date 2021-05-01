@@ -1,6 +1,8 @@
-from classtree import (Shot)
+from shotLibraryClass import (Shot)
 import time
+import random
 import RPi.GPIO as GPIO
+from random import choice
 
 
 GPIO.setmode(GPIO.BOARD)
@@ -13,18 +15,21 @@ GPIO.setup(31, GPIO.OUT)    # direction control b.2
 
 t = GPIO.PWM(11, Shot.tfreq)    # GPIO.PWM instance start
 b = GPIO.PWM(13, Shot.bfreq)    # GPIO.PWM instance start
-split = 5                       # Time Between shots
+
+
+def split():
+    return random.randint(3, 10)                      # Random time Between shots
 
 
 def print_it():
     print('''
 
 Name = {} 
-Top Duty = {} | Bottom Duty = {} | 
-Top Freq = {} | Bottom Freq = {} |
-Top Pin  = {} | Bottom Pin = {}
+Top Duty = {} | Top Freq = {} | Top Pin = {} 
+Bot Duty = {} | Bot Freq = {} | Bot Pin = {}
+ 
 
-            '''.format(Shot.name, Shot.tduty, Shot.bduty, Shot.tfreq, Shot.bfreq, Shot.tpin, Shot.bpin))
+            '''.format(Shot.name, Shot.tduty, Shot.tfreq, Shot.tpin, Shot.bduty,  Shot.bfreq,  Shot.bpin))
 
 
 def shot_instance():
@@ -34,22 +39,26 @@ def shot_instance():
     b.ChangeDutyCycle(Shot.bduty)
 
 
+Shotlist = [Shot.topspin, Shot.backspin, Shot.deeptopspin, Shot.deepbackspin, Shot.dropshot]
+
+
+
 t.start(0)                                  # Begin PWM
 b.start(0)                                  # Begin PWM
 i = 0                                       # Instance for timing
-Shot.topspin()
+ShotNumber = i + 1
+Shot.startup()
+shot_instance()
 print_it()
-while i <= 2:                               # Where number is the amount of rounds
-    print("Loop Start")
+time.sleep(split())
+while i <= 40:                               # Where number is the amount of rounds
+    print("Shot Number: ")
     print(i + 1)
-    Shot.topspin()
+    choice(Shotlist)()
+    split()
     shot_instance()
     print_it()
-    time.sleep(split)
-    Shot.backspin()
-    shot_instance()
-    print_it()
-    time.sleep(split)
+    time.sleep(split())
     i = i + 1
 GPIO.cleanup()
 

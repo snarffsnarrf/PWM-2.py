@@ -1,7 +1,7 @@
 import RPi.GPIO as GPIO
 import time
-from classtree import Shot
-from classtree import shottype
+from shotLibraryClass import Shot
+from shotLibraryClass import shottype
 
 
 

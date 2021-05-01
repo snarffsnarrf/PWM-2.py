@@ -13,22 +13,52 @@ GPIO.setup(31, GPIO.OUT)    # direction control b.2
 
 t = GPIO.PWM(11, Shot.tfreq)
 b = GPIO.PWM(13, Shot.bfreq)
+split = 5
 
+t.start(0)
+b.start(0)
+
+i = 0
+
+def print_it():
+    print('''
+
+Name = {} 
+Top Duty = {} | Bottom Duty = {} | 
+Top Freq = {} | Bottom Freq = {} |
+Top Pin  = {} | Bottom Pin = {}
+
+            '''.format(Shot.name, Shot.tduty, Shot.bduty, Shot.tfreq, Shot.bfreq, Shot.tpin, Shot.bpin))
 
 
 Shot.topspin()
-while True:
+print_it()
+# print('''
+#
+# Name = {}
+# Top Duty = {} | Bottom Duty = {} |
+# Top Freq = {} | Bottom Freq = {} |
+# Top Pin  = {} | Bottom Pin = {}
+#
+#         '''.format(Shot.name, Shot.tduty, Shot.bduty, Shot.tfreq, Shot.bfreq, Shot.tpin, Shot.bpin))
+while i <= 5:
+    print("Loop Start")
+    print(i + 1)
+    Shot.topspin()
+    t.ChangeFrequency(Shot.tfreq)
+    b.ChangeFrequency(Shot.bfreq)
     t.ChangeDutyCycle(Shot.tduty)
     b.ChangeDutyCycle(Shot.bduty)
-    print('Top Duty = {} | Bottom Duty = {} | Name = {} |'.format(Shot.tduty, Shot.bduty, Shot.name))
-    break
-time.sleep(5)
-Shot.backspin()
-while True:
-    t.ChangeDutyCycle(Shot.bduty)
+    print_it()
+    time.sleep(split)
+    Shot.backspin()
+    t.ChangeFrequency(Shot.tfreq)
+    b.ChangeFrequency(Shot.bfreq)
+    t.ChangeDutyCycle(Shot.tduty)
     b.ChangeDutyCycle(Shot.bduty)
-    print('Top Duty = {} | Bottom Duty = {} | Name = {} |'.format(Shot.tduty, Shot.bduty, Shot.name))
-    break
+    print_it()
+    time.sleep(split)
+    i = i + 1
 GPIO.cleanup()
 
 

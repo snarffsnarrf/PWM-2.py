@@ -1,6 +1,6 @@
 
 
-Hfreq = 100
+Hfreq = 400
 Lfreq = 50
 toppin = 11
 botpin = 13
@@ -18,17 +18,17 @@ class Shot:
         self.name = name
 
     def topspin(self):
-        self.tfreq = Hfreq
-        self.bfreq = Hfreq
+        self.tfreq = 150
+        self.bfreq = 150
         self.tpin = toppin
         self.bpin = botpin
         self.tduty = 100
-        self.bduty = 80
+        self.bduty = 50
         self.name = "Topspin"
 
     def backspin(self):
-        self.tfreq = Hfreq
-        self.bfreq = Hfreq
+        self.tfreq = 200
+        self.bfreq = 200
         self.tpin = toppin
         self.bpin = botpin
         self.tduty = 80
@@ -40,7 +40,7 @@ class Shot:
 #     self.topspin = Shot.topspin()
 
 
-Shot = Shot(1, 1, 0, 0, 0, 0, 0)
+Shot = Shot(100, 100, 0, 0, 0, 0, 0)
 
 def output():
     return 'Top Freq={} | Bot Freq={} | Top Pin={} | Bot Pin={} | TDuty {} | Bduty {}'\

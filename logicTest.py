@@ -39,21 +39,15 @@ b.start(0)                                  # Begin PWM
 i = 0                                       # Instance for timing
 Shot.topspin()
 print_it()
-while i <= 5:                               # Where number is the amount of rounds
+while i <= 2:                               # Where number is the amount of rounds
     print("Loop Start")
     print(i + 1)
     Shot.topspin()
-    t.ChangeFrequency(Shot.tfreq)
-    b.ChangeFrequency(Shot.bfreq)
-    t.ChangeDutyCycle(Shot.tduty)
-    b.ChangeDutyCycle(Shot.bduty)
+    shot_instance()
     print_it()
     time.sleep(split)
     Shot.backspin()
-    t.ChangeFrequency(Shot.tfreq)
-    b.ChangeFrequency(Shot.bfreq)
-    t.ChangeDutyCycle(Shot.tduty)
-    b.ChangeDutyCycle(Shot.bduty)
+    shot_instance()
     print_it()
     time.sleep(split)
     i = i + 1

@@ -1,7 +1,4 @@
 
-
-Hfreq = 400
-Lfreq = 50
 toppin = 11
 botpin = 13
 

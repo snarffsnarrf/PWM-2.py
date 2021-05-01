@@ -18,7 +18,7 @@ b = GPIO.PWM(13, Shot.bfreq)    # GPIO.PWM instance start
 
 
 def split():
-    return random.randint(3, 10)                      # Random time Between shots
+    return random.randint(3, 6)                      # Random time Between shots
 
 
 def print_it():
@@ -51,7 +51,7 @@ Shot.startup()
 shot_instance()
 print_it()
 time.sleep(split())
-while i <= 40:                               # Where number is the amount of rounds
+while i <= 1000:                               # Where number is the amount of rounds
     print("Shot Number: ")
     print(i + 1)
     choice(Shotlist)()

@@ -1,4 +1,4 @@
-Hfreq = 100
+Hfreq = 1000
 toppin = 11
 botpin = 13
 
@@ -64,8 +64,8 @@ class Shot:
         self.bfreq = Hfreq
         self.tpin = toppin
         self.bpin = botpin
-        self.tduty = 30
-        self.bduty = 35
+        self.tduty = 40
+        self.bduty = 40
         self.name = "Dropshot"
 
 

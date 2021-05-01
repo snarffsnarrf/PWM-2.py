@@ -34,9 +34,6 @@ GPIO.output(18, True)
 GPIO.output(29, False)
 GPIO.output(31, True)
 
-fast.shottype()
-
-
 
 while i <= 10:
     print("""

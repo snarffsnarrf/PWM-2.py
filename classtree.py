@@ -35,28 +35,16 @@ class Shot:
         self.bduty = 100
 
 
+def Shottype(self):
+    self.topspin = Shot.topspin()
+
+
+
+
+
 Shot = Shot(0, 0, 0, 0, 0, 0)
 
 def output():
     return 'Top Freq={} | Bot Freq={} | Top Pin={} | Bot Pin={} | TDuty {} | Bduty {}'\
         .format(Shot.tfreq, Shot.bfreq, Shot.tpin, Shot.bpin, Shot.tduty, Shot.bduty)
 
-print(output())
-time.sleep(1)
-Shot.topspin()
-print(output())
-time.sleep(1)
-Shot.backspin()
-print(output())
-time.sleep(1)
-Shot.topspin()
-print(output())
-time.sleep(1)
-Shot.backspin()
-print(output())
-time.sleep(1)
-Shot.topspin()
-print(output())
-time.sleep(1)
-Shot.backspin()
-print(output())

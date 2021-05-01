@@ -1,4 +1,4 @@
-from classes import (Freq, Pin, pwm, DutyCycle, duty)  # Maybe I'm doing this right?
+from Old.classes import (Pin)  # Maybe I'm doing this right?
 
 shot = input("What shot type")
 while True:

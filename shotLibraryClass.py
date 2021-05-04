@@ -1,6 +1,11 @@
-Hfreq = 1000
-toppin = 11
-botpin = 13
+Hfreq = 200
+top_pin = 11
+bot_pin = 13
+
+hhspd = 100
+hspd = 95
+mspd = 85
+lspd =75
 
 
 class Shot:
@@ -17,57 +22,65 @@ class Shot:
     def startup(self):
         self.tfreq = Hfreq
         self.bfreq = Hfreq
-        self.tpin = toppin
-        self.bpin = botpin
-        self.tduty = 40
-        self.bduty = 40
+        self.tpin = top_pin
+        self.bpin = bot_pin
+        self.tduty = lspd
+        self.bduty = lspd
         self.name = "Starting Motors"
 
-    def topspin(self):
+    def t_spin(self):
         self.tfreq = Hfreq
         self.bfreq = Hfreq
-        self.tpin = toppin
-        self.bpin = botpin
-        self.tduty = 70
-        self.bduty = 50
+        self.tpin = top_pin
+        self.bpin = bot_pin
+        self.tduty = hspd
+        self.bduty = mspd
         self.name = "Topspin"
 
-    def backspin(self):
+    def b_spin(self):
         self.tfreq = Hfreq
         self.bfreq = Hfreq
-        self.tpin = toppin
-        self.bpin = botpin
-        self.tduty = 50
-        self.bduty = 70
+        self.tpin = top_pin
+        self.bpin = bot_pin
+        self.tduty = mspd
+        self.bduty = hspd
         self.name = "Backspin"
 
-    def deeptopspin(self):
+    def d_t_spin(self):
         self.tfreq = Hfreq
         self.bfreq = Hfreq
-        self.tpin = toppin
-        self.bpin = botpin
-        self.tduty = 100
-        self.bduty = 70
+        self.tpin = top_pin
+        self.bpin = bot_pin
+        self.tduty = hhspd
+        self.bduty = hspd
         self.name = "DeepTopspin"
 
-    def deepbackspin(self):
+    def d_b_spin(self):
         self.tfreq = Hfreq
         self.bfreq = Hfreq
-        self.tpin = toppin
-        self.bpin = botpin
-        self.tduty = 70
-        self.bduty = 100
+        self.tpin = top_pin
+        self.bpin = bot_pin
+        self.tduty = hspd
+        self.bduty = hhspd
         self.name = "Deep Backspin"
 
-    def dropshot(self):
+    def d_shot(self):
         self.tfreq = Hfreq
         self.bfreq = Hfreq
-        self.tpin = toppin
-        self.bpin = botpin
-        self.tduty = 40
-        self.bduty = 40
+        self.tpin = top_pin
+        self.bpin = bot_pin
+        self.tduty = mspd
+        self.bduty = mspd
         self.name = "Dropshot"
 
+    def wideopen(self):
+        self.tfreq = Hfreq
+        self.bfreq = Hfreq
+        self.tpin = top_pin
+        self.bpin = bot_pin
+        self.tduty = hhspd
+        self.bduty = hhspd
+        self.name = "Wide Open"
 
 # def Shottype(self):
 #     self.topspin = Shot.topspin()

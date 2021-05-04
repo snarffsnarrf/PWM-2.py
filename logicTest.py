@@ -18,7 +18,7 @@ b = GPIO.PWM(13, Shot.bfreq)    # GPIO.PWM instance start
 
 
 def split():
-    return random.randint(3, 6)                      # Random time Between shots
+    return random.randint(3, 10)                      # Random time Between shots
 
 
 def print_it():
@@ -39,8 +39,7 @@ def shot_instance():
     b.ChangeDutyCycle(Shot.bduty)
 
 
-Shotlist = [Shot.topspin, Shot.backspin, Shot.deeptopspin, Shot.deepbackspin, Shot.dropshot]
-
+Shotlist = [Shot.t_spin, Shot.d_t_spin, Shot.b_spin, Shot.d_b_spin, Shot.d_shot, Shot.wideopen]
 
 
 t.start(0)                                  # Begin PWM
@@ -51,7 +50,7 @@ Shot.startup()
 shot_instance()
 print_it()
 time.sleep(split())
-while i <= 1000:                               # Where number is the amount of rounds
+while i <= 100:                               # Where number is the amount of rounds
     print("Shot Number: ")
     print(i + 1)
     choice(Shotlist)()

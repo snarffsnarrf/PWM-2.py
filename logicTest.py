@@ -12,9 +12,14 @@ GPIO.setup(16, GPIO.OUT)    # direction control t.1
 GPIO.setup(18, GPIO.OUT)    # direction control t.2
 GPIO.setup(29, GPIO.OUT)    # direction control b.1
 GPIO.setup(31, GPIO.OUT)    # direction control b.2
+GPIO.setup(32, GPIO.OUT)
+GPIO.setup(33, GPIO.OUT)
 
 t = GPIO.PWM(11, Shot.tfreq)    # GPIO.PWM instance start
 b = GPIO.PWM(13, Shot.bfreq)    # GPIO.PWM instance start
+l = GPIO.PWM(32, Shot.lfreq)
+r = GPIO.PWM(32, Shot.rfreq)
+
 
 
 def split():
@@ -41,25 +46,28 @@ def shot_instance():
 
 Shotlist = [Shot.t_spin, Shot.d_t_spin, Shot.b_spin, Shot.d_b_spin, Shot.d_shot, Shot.wideopen]
 
-
-t.start(0)                                  # Begin PWM
-b.start(0)                                  # Begin PWM
-i = 0                                       # Instance for timing
-ShotNumber = i + 1
-Shot.startup()
-shot_instance()
-print_it()
-time.sleep(split())
-while i <= 100:                               # Where number is the amount of rounds
-    print("Shot Number: ")
-    print(i + 1)
-    choice(Shotlist)()
-    split()
+try:
+    t.start(0)                                  # Begin PWM
+    b.start(0)                                  # Begin PWM
+    i = 0                                       # Instance for timing
+    ShotNumber = i + 1
+    Shot.startup()
     shot_instance()
     print_it()
     time.sleep(split())
-    i = i + 1
-GPIO.cleanup()
+    while i <= 100:                               # Where number is the amount of rounds
+        print("Shot Number: ")
+        print(i + 1)
+        choice(Shotlist)()
+        split()
+        shot_instance()
+        print_it()
+        time.sleep(split())
+        i = i + 1
+finally:
+    t.stop()
+    b.stop()
+    GPIO.cleanup()
 
 
 # Shot = Shot(1, 1, 0, 0, 0, 0)

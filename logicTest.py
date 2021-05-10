@@ -1,4 +1,4 @@
-from shotLibraryClass import (Shot)
+from shot_library import (Shot)
 import time
 import random
 import RPi.GPIO as GPIO

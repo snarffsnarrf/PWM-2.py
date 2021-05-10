@@ -1,4 +1,4 @@
-from shotLibraryClass import   # Maybe I'm doing this right?
+from shot_library import   # Maybe I'm doing this right?
 import RPi.GPIO as GPIO
 
 GPIO.setmode(GPIO.BOARD)
